@@ -13,18 +13,17 @@ export default class Controls {
     this.camera = this.experience.camera;
     this.resources = this.experience.resources;
     this.time = this.experience.time;
-    this.room = this.experience.world.room.actualTarget;
 
-    this.circle = this.experience.world.floor.circle;
-    this.circle2 = this.experience.world.floor.circle2;
-    this.circle3 = this.experience.world.floor.circle3;
+    // this.circle = this.experience.world.floor.circle;
+    // this.circle2 = this.experience.world.floor.circle2;
+    // this.circle3 = this.experience.world.floor.circle3;
 
     GSAP.registerPlugin(ScrollTrigger);
 
     document.querySelector(".page").style.overflow = "visible"; //maybe off with world off
 
     this.setSmoothScroll();
-    this.setPath();
+    //this.setPath();
   }
 
   setupASScroll() {

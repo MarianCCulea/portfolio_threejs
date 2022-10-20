@@ -10,15 +10,14 @@ export default class Cv {
     this.time = this.experience.time;
     this.target = this.resources.items.cv; //target is item name from assets.js
     this.cv = this.target.scene;
+    this.unsorted = {};
     this.lerp = {
       current: 0,
       target: 0,
       ease: 0.1,
     };
-    console.log(this.target);
-    console.log(this.cv);
     this.setModel();
-    this.onMouseMove();
+    //this.onMouseMove();
   }
 
   setModel() {
@@ -32,14 +31,25 @@ export default class Cv {
         });
       }
       if (element.name === "Picture") {
-        console.log(element);
         element.material = new THREE.MeshBasicMaterial({
           map: this.resources.items.pic,
         });
       }
+      element.scale.set(0, 0, 0);
+
+      this.unsorted[element.name.toLowerCase()] = element;
     });
+    this.cvChildren = Object.keys(this.unsorted)
+      .sort()
+      .reduce((accumulator, key) => {
+        accumulator[key] = this.unsorted[key];
+
+        return accumulator;
+      }, {});
+    this.cv.rotation.x = -Math.PI / 4;
+    //this.cv.position.y = -2;
+    //this.cvChildren.picture.scale.set(1, 1, 1);
     this.scene.add(this.cv);
-    //this.cv.scale.set(0.11, 0.11, 0.11);
   }
 
   onMouseMove() {
@@ -51,11 +61,11 @@ export default class Cv {
   }
   resize() {}
   update() {
-    this.lerp.current = GSAP.utils.interpolate(
-      this.lerp.current,
-      this.lerp.target,
-      this.lerp.ease
-    );
-    this.cv.rotation.y = this.lerp.current;
+    // this.lerp.current = GSAP.utils.interpolate(
+    //   this.lerp.current,
+    //   this.lerp.target,
+    //   this.lerp.ease
+    // );
+    // this.cv.rotation.y = this.lerp.current;
   }
 }

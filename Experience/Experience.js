@@ -31,9 +31,10 @@ export default class Experience {
     this.world = new World();
     this.preloader = new Preloader();
 
-    this.preloader.on("enablecontrols", () => {
-      this.controls = new Controls();
-    });
+    this.controls = new Controls(); //
+    // this.preloader.on("enablecontrols", () => {
+    //   this.controls = new Controls();
+    // });
     this.sizes.on("resize", () => {
       this.resize();
     });

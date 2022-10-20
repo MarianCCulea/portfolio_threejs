@@ -14,7 +14,6 @@ export default class Preloader extends EventEmitter {
     this.resources = this.experience.resources;
     this.time = this.experience.time;
     this.world = this.experience.world;
-    this.room = this.world.room;
     this.device = this.sizes.device;
 
     this.sizes.on("switchdevice", (device) => {
@@ -33,51 +32,152 @@ export default class Preloader extends EventEmitter {
     convert(document.querySelector(".hero-main-description"));
     convert(document.querySelector(".hero-second-subheading"));
     convert(document.querySelector(".secondsb"));
+
+    this.cv = this.experience.world.cv.cv;
+    this.cvChildren = this.experience.world.cv.cvChildren;
   }
 
   firstIntro() {
     return new Promise((resolve) => {
       this.timeline = new GSAP.timeline();
       this.timeline.set(".animate", { y: 0, yPercent: 100 });
-
-      if (this.device === "desktop") {
-        this.timeline.to(".preloader", {
-          opacity: 0,
-          delay: 1,
-          onComplete: () => {
-            document.querySelector(".preloader").classList.add("hidden");
-          },
-        });
-
-        this.timeline.to(this.world.room.actualTarget, {
-          x: 1.4,
-        });
-      } else {
-        this.timeline.to(this.world.room.actualTarget, {
-          x: 1.4,
-        });
-      }
-      this.timeline.to(".intro-text .animate", {
-        yPercent: 0,
-        stagger: 0.07,
-        ease: "back.out(1.2)",
-        onComplete: resolve,
+      this.timeline.to(".preloader", {
+        opacity: 0,
+        delay: 1,
+        onComplete: () => {
+          document.querySelector(".preloader").classList.add("hidden");
+        },
       });
+      if (this.device === "desktop") {
+        this.timeline
+          .to(this.cvChildren.picture.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.5)",
+            duration: 0.7,
+          })
+          .to(this.cv.position, {
+            x: -1,
+            ease: "power1.out",
+            duration: 0.7,
+          });
+      } else {
+        this.timeline
+          .to(this.cvChildren.picture.scale, {
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "back.out(2.5)",
+            duration: 0.7,
+          })
+          .to(this.cv.position, {
+            z: -1,
+            ease: "power1.out",
+            duration: 0.7,
+          });
+      }
+      this.timeline
+        .to(".intro-text .animate", {
+          yPercent: 0,
+          stagger: 0.07,
+          ease: "back.out(1.2)",
+        })
+        .to(
+          ".arrow-svg-wrapper",
+          {
+            opacity: 1,
+          },
+          "same"
+        )
+        .to(
+          ".toggle-bar",
+          {
+            opacity: 1,
+            onComplete: resolve,
+          },
+          "same"
+        );
     });
   }
 
   secondIntro() {
     return new Promise((resolve) => {
-      this.timeline = new GSAP.timeline();
+      this.secondTimeline = new GSAP.timeline();
+      console.log(this.cvChildren);
+      for (const child in this.cvChildren) {
+        console.log(this.cvChildren[child]);
+        this.secondTimeline.to(this.cvChildren[child].scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "back.out(2.2)",
+          duration: 1,
+        });
+      }
+
+      this.secondTimeline
+        .to(
+          ".intro-text .animate",
+          {
+            yPercent: 100,
+            stagger: 0.05,
+            ease: "back.in(1.7)",
+          },
+          "fadeout"
+        )
+        .to(
+          ".arrow-svg-wrapper",
+          {
+            opacity: 0,
+          },
+          "fadeout"
+        )
+        .to(
+          ".hero-main-title .animate",
+          {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          },
+          "introtext"
+        )
+        .to(
+          ".hero-main-description .animate",
+          {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          },
+          "introtext"
+        )
+        .to(
+          ".firstsb .animate",
+          {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          },
+          "introtext"
+        )
+        .to(
+          ".secondsb .animate",
+          {
+            yPercent: 0,
+            stagger: 0.07,
+            ease: "back.out(1.7)",
+          },
+          "introtext"
+        )
+        .to(".arrow-svg-wrapper", {
+          opacity: 1,
+          onComplete: resolve,
+        });
+
       if (this.device === "desktop") {
       } else {
       }
     });
-  }
-  async playSecondIntro() {
-    this.moveFlag = false;
-    await this.secondIntro();
-    this.emit("enableControls");
   }
 
   onScroll(e) {
@@ -88,41 +188,50 @@ export default class Preloader extends EventEmitter {
   }
 
   onTouch(e) {
-    this.initialY = e.touches[0].clientY;
+    this.initalY = e.touches[0].clientY;
   }
 
   onTouchMove(e) {
     let currentY = e.touches[0].clientY;
-    let difference = this.initialY - currentY;
+    let difference = this.initalY - currentY;
     if (difference > 0) {
+      console.log("swipped up");
       this.removeEventListeners();
       this.playSecondIntro();
     }
-    this.initialY = null;
+    this.intialY = null;
   }
 
   removeEventListeners() {
     window.removeEventListener("wheel", this.scrollOnceEvent);
-    window.removeEventListener("wheel", this.touchStart);
-    window.removeEventListener("wheel", this.touchMove);
+    window.removeEventListener("touchstart", this.touchStart);
+    window.removeEventListener("touchmove", this.touchMove);
   }
 
   async playIntro() {
+    this.scaleFlag = true;
     await this.firstIntro();
     this.moveFlag = true;
     this.scrollOnceEvent = this.onScroll.bind(this);
     this.touchStart = this.onTouch.bind(this);
     this.touchMove = this.onTouchMove.bind(this);
     window.addEventListener("wheel", this.scrollOnceEvent);
-    window.addEventListener("wheel", this.touchStart);
-    window.addEventListener("wheel", this.touchMove);
+    window.addEventListener("touchstart", this.touchStart);
+    window.addEventListener("touchmove", this.touchMove);
+  }
+
+  async playSecondIntro() {
+    this.moveFlag = false;
+    await this.secondIntro();
+    this.scaleFlag = false;
+    this.emit("enableControls");
   }
 
   move() {
     if (this.device === "desktop") {
-      this.world.room.actualTarget.position.set(-1, 0, 0);
+      this.world.cv.cv.position.set(0, 0, 0);
     } else {
-      this.world.room.actualTarget.position.set(0, 0, -1);
+      this.world.cv.cv.position.set(0, 0, 0);
     }
   }
   update() {

@@ -22,7 +22,6 @@ export default class World extends EventEmitter {
       this.enviroment = new Enviroment();
       this.floor = new Floor();
       this.cv = new Cv();
-      this.room = new Room();
       this.controls = new Controls(); //maybe off
       this.emit("worldready");
     });
@@ -42,9 +41,6 @@ export default class World extends EventEmitter {
   update() {
     if (this.cv) {
       this.cv.update();
-    }
-    if (this.room) {
-      this.room.update();
     }
     if (this.controls) {
       this.controls.update();

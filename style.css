@@ -17,6 +17,50 @@ html, body{
 h1,section,p,span,svg{transition: background-color 0.5s, color 0.5s;}
 
 :root{
+  --red1:#ff756a;
+  --red2:#ffbfba;
+  --red3:#ff978f;
+  --red4:#f25347;
+  --red5:#db291b;
+  --red6:#9d3b60;
+
+  --purple1:#8e99ce;
+  --purple1:#596596;
+
+  --green1:#46aaaa;
+  --green2:#a8e5e5;
+  --green3:#71c9c9;
+  --green4:#2a9191;
+  --green5:#108484;
+  --green6:#324b4b;
+  --green7:#93afae;
+
+  --grey1:#576464;
+  --grey2:#939999;
+  --grey3:#717c7c;
+  --grey4:#404e4e;
+  --grey5:#263232;
+
+  --grey-red1:#a79392;
+  --grey-red2:#fff5f4;
+  --grey-red3:#cebebd;
+  --grey-red4:#826c6b;
+  --grey-red5:#54413f;
+
+  --grey-yellow1:#a79f92;
+  --grey-yellow2:#544d3f;
+  --grey-yellow3:#827a6b;
+  --grey-yellow4:#cec8bd;
+  --grey-yellow5:#fffbf4;
+
+--yellow1:#ffcb6a;
+--yellow2:#db981b;
+--yellow3:#f2b647;
+--yellow4:#ffd88f;
+--yellow5:#ffe7ba;
+
+--white1:#fce4d1;
+
   --text-black:#263232;
   --primary-color:#FCE4D1;
   --primary-pink:#8e99ce;
@@ -258,6 +302,7 @@ transform: scale(0.85);
   transform: translateY(8px)
 }
 }
+
 .section-intro-wrapper{
 position: relative;
 padding: 20% 5%;
