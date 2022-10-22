@@ -57,8 +57,19 @@ export default class Preloader extends EventEmitter {
             ease: "back.out(2.5)",
             duration: 0.7,
           })
+          .to(
+            this.cvChildren.picture_frame.scale,
+            {
+              x: 1,
+              y: 1,
+              z: 1,
+              duration: 0.7,
+              ease: "back.out(2.5)",
+            },
+            "<"
+          )
           .to(this.cv.position, {
-            x: -1,
+            x: 0,
             ease: "power1.out",
             duration: 0.7,
           });
@@ -73,6 +84,7 @@ export default class Preloader extends EventEmitter {
           })
           .to(this.cv.position, {
             z: -1,
+            x: -2,
             ease: "power1.out",
             duration: 0.7,
           });
@@ -104,17 +116,6 @@ export default class Preloader extends EventEmitter {
   secondIntro() {
     return new Promise((resolve) => {
       this.secondTimeline = new GSAP.timeline();
-      console.log(this.cvChildren);
-      for (const child in this.cvChildren) {
-        console.log(this.cvChildren[child]);
-        this.secondTimeline.to(this.cvChildren[child].scale, {
-          x: 1,
-          y: 1,
-          z: 1,
-          ease: "back.out(2.2)",
-          duration: 1,
-        });
-      }
 
       this.secondTimeline
         .to(
@@ -126,6 +127,399 @@ export default class Preloader extends EventEmitter {
           },
           "fadeout"
         )
+        .to(this.cv.position, {
+          z: -1.65,
+          y: -0.6,
+          duration: 1.3,
+          ease: "power3.out",
+        })
+
+        .to(this.cvChildren.main_side.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.3,
+          ease: "power3.out",
+        })
+        .to(this.cvChildren.left_side.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.3,
+          ease: "power3.out",
+        })
+        .to(
+          this.cvChildren.text1.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          },
+          "<"
+        )
+        .to(this.cvChildren.sphere1.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.2,
+          ease: "back.out(1.4)",
+        })
+        .to(this.cvChildren.sphere2.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.2,
+          ease: "back.out(1.7)",
+        })
+        .to(this.cvChildren.sphere3.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.2,
+          ease: "back.out(1.7)",
+        })
+        .to(
+          this.cvChildren.sphere4.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.2,
+            ease: "back.out(1.7)",
+          },
+          "mata"
+        )
+        .to(this.cvChildren.sphere5.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        })
+        .to(this.cvChildren.sphere6.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        })
+        .to(this.cvChildren.sphere7.scale, {
+          x: 1,
+          y: 1,
+          z: 1,
+          duration: 0.2,
+          ease: "back.out(1.7)",
+        })
+        .to(
+          this.cvChildren.text3.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "mata"
+        )
+        .to(
+          this.cvChildren.progressbase1.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.text4.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress1.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase2.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        ///////////
+        .to(
+          this.cvChildren.text5.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress2.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase3.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+
+        /////////
+        .to(
+          this.cvChildren.text6.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress3.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase4.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+
+        /////////
+        .to(
+          this.cvChildren.text7.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress4.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase5.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        //////////////
+
+        .to(
+          this.cvChildren.text9.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress5.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase6.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        ////////
+        .to(
+          this.cvChildren.text8.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress6.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progressbase7.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.progress7.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.8,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.text2.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.2,
+            ease: "back.out(1.9)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.car.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.8)",
+          },
+          "<0.3"
+        )
+        .to(
+          this.cvChildren.puzzle.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        )
+        .to(
+          this.cvChildren.dumbell.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          },
+          "<0.4"
+        )
+        .to(
+          this.cvChildren.controller.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.8)",
+          },
+          "<0.6"
+        )
+        .to(
+          this.cvChildren.ball.scale,
+          {
+            x: 1,
+            y: 1,
+            z: 1,
+            duration: 0.3,
+            ease: "back.out(1.7)",
+          },
+          "<0.2"
+        );
+
+      this.secondTimeline
+
         .to(
           ".arrow-svg-wrapper",
           {
@@ -236,7 +630,7 @@ export default class Preloader extends EventEmitter {
   }
   update() {
     if (this.moveFlag) {
-      this.move();
+      // this.move();
     }
   }
 }

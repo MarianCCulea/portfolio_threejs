@@ -12,6 +12,7 @@ import Preloader from "./Preloader";
 import Controls from "./World/Controls";
 
 import World from "./World/World";
+import Floaters from "./World/Floaters";
 
 export default class Experience {
   static instance;
@@ -30,6 +31,7 @@ export default class Experience {
     this.theme = new Theme();
     this.world = new World();
     this.preloader = new Preloader();
+    this.floaters = new Floaters();
 
     this.controls = new Controls(); //
     // this.preloader.on("enablecontrols", () => {
@@ -53,5 +55,6 @@ export default class Experience {
     this.world.update();
     this.renderer.update();
     this.preloader.update();
+    this.floaters.update();
   }
 }

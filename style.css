@@ -400,13 +400,13 @@ top: 0px;
 
 .hero-main{
   position: absolute;
-  bottom:168px;
+  bottom:0px;
   left: 0;
   color: var(--color-text);
 }
 .hero-second{
   position: absolute;
-  top:calc(50% - 120px);
+  top:calc(50% + 50px);
   right: 0;
   color: var(--color-text);
 }

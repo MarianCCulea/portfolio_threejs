@@ -5,6 +5,7 @@ import Enviroment from "./Enviroment";
 import Controls from "./Controls";
 import Floor from "./Floor";
 import EventEmitter from "events";
+import Floaters from "./Floaters";
 
 export default class World extends EventEmitter {
   constructor() {
@@ -23,6 +24,7 @@ export default class World extends EventEmitter {
       this.floor = new Floor();
       this.cv = new Cv();
       this.controls = new Controls(); //maybe off
+      this.floaters = new Floaters();
       this.emit("worldready");
     });
 
@@ -41,6 +43,9 @@ export default class World extends EventEmitter {
   update() {
     if (this.cv) {
       this.cv.update();
+    }
+    if (this.floaters) {
+      this.floaters.update();
     }
     if (this.controls) {
       this.controls.update();

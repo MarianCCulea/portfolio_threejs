@@ -2,6 +2,7 @@ import Experience from "./Experience";
 import Sizes from "./Utils/Sizes";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import GUI from "lil-gui";
 export default class Camera {
   constructor() {
     this.experience = new Experience();
@@ -9,9 +10,49 @@ export default class Camera {
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
 
+    this.gui = new GUI({ container: document.querySelector(".hero-main") });
+    this.obj = { colorObj: { r: 0, b: 0, c: 0 }, intensity: 3 };
+    this.boxobj = {
+      position: { x: 0, y: 0, z: 0 },
+      rotation: { x: 0, y: 0, z: 0 },
+    };
+
+    //
     this.createPerspectiveCamera();
     this.createOrthographicCamera();
     this.setOrbitControls();
+    this.setGUI();
+  }
+
+  setGUI() {
+    this.gui.add(this.boxobj.position, "x", 0, 15).onChange(() => {
+      this.perspectiveCamera.position.x = this.boxobj.position.x;
+    });
+    this.gui.add(this.boxobj.position, "y", 0, 15).onChange(() => {
+      this.perspectiveCamera.position.y = this.boxobj.position.y;
+    });
+    this.gui.add(this.boxobj.position, "z", 0, 15).onChange(() => {
+      this.perspectiveCamera.position.z = this.boxobj.position.z;
+    });
+    this.gui.add(this.boxobj.rotation, "x", 0, 6).onChange(() => {
+      this.perspectiveCamera.rotation.x = this.boxobj.rotation.x;
+    });
+    this.gui.add(this.boxobj.rotation, "y", 0, 6).onChange(() => {
+      this.perspectiveCamera.rotation.y = this.boxobj.rotation.y;
+    });
+    this.gui.add(this.boxobj.rotation, "z", 0, 6).onChange(() => {
+      this.perspectiveCamera.rotation.z = this.boxobj.rotation.z;
+    });
+    // this.gui.addColor(this.obj, "colorObj").onChange(() => {
+    //   this.sunLight.color.copy(this.obj.colorObj);
+    //   this.ambientLight.color.copy(this.obj.colorObj);
+    //   console.log(this.obj.colorObj);
+    // });
+
+    // this.gui.add(this.obj, "intensity", 0, 10).onChange(() => {
+    //   this.sunLight.intensity = this.obj.intensity;
+    //   this.sunLight.ambientLight = this.obj.intensity;
+    // });
   }
 
   createPerspectiveCamera() {
@@ -22,9 +63,9 @@ export default class Camera {
       1000
     );
     this.scene.add(this.perspectiveCamera);
-    this.perspectiveCamera.position.z = 11;
-    this.perspectiveCamera.position.x = 11;
-    this.perspectiveCamera.position.y = 15;
+    this.perspectiveCamera.position.z = 6;
+    this.perspectiveCamera.position.x = 0;
+    this.perspectiveCamera.position.y = 6;
   }
 
   createOrthographicCamera() {
@@ -55,7 +96,7 @@ export default class Camera {
     // this.scene.add(axesHelper);
   }
   setOrbitControls() {
-    this.controls = new OrbitControls(this.orthographicCamera, this.canvas);
+    this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
     this.controls.enableDamping = true;
     this.controls.enableZoom = true;
   }

@@ -17,7 +17,7 @@ export default class Cv {
       ease: 0.1,
     };
     this.setModel();
-    //this.onMouseMove();
+    this.onMouseMove();
   }
 
   setModel() {
@@ -47,7 +47,8 @@ export default class Cv {
         return accumulator;
       }, {});
     this.cv.rotation.x = -Math.PI / 4;
-    //this.cv.position.y = -2;
+    this.cv.position.z = 2.25;
+    this.cv.position.x = 0.8;
     //this.cvChildren.picture.scale.set(1, 1, 1);
     this.scene.add(this.cv);
   }
@@ -61,11 +62,17 @@ export default class Cv {
   }
   resize() {}
   update() {
-    // this.lerp.current = GSAP.utils.interpolate(
-    //   this.lerp.current,
-    //   this.lerp.target,
-    //   this.lerp.ease
-    // );
-    // this.cv.rotation.y = this.lerp.current;
+    this.lerp.current = GSAP.utils.interpolate(
+      this.lerp.current,
+      this.lerp.target,
+      this.lerp.ease
+    );
+    this.cv.rotation.y = this.lerp.current;
+
+    this.experience.renderer.bokeh.uniforms.focus.value =
+      this.experience.renderer.camera.perspectiveCamera.position.z -
+      this.cv.position.z +
+      2.25;
+    //console.log(this.experience.renderer.bokeh.uniforms.focus.value);
   }
 }
