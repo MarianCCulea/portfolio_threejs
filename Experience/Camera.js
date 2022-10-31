@@ -10,18 +10,18 @@ export default class Camera {
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
 
-    this.gui = new GUI({ container: document.querySelector(".hero-main") });
-    this.obj = { colorObj: { r: 0, b: 0, c: 0 }, intensity: 3 };
-    this.boxobj = {
-      position: { x: 0, y: 0, z: 0 },
-      rotation: { x: 0, y: 0, z: 0 },
-    };
+    // this.gui = new GUI({ container: document.querySelector(".hero-main") });
+    // this.obj = { colorObj: { r: 0, b: 0, c: 0 }, intensity: 3 };
+    // this.boxobj = {
+    //   position: { x: 0, y: 0, z: 0 },
+    //   rotation: { x: 0, y: 0, z: 0 },
+    // };
 
     //
     this.createPerspectiveCamera();
     this.createOrthographicCamera();
     this.setOrbitControls();
-    this.setGUI();
+    //this.setGUI();
   }
 
   setGUI() {

@@ -34,16 +34,20 @@ export default class Floaters {
       new THREE.BufferAttribute(positionArray, 3)
     );
 
-    const particlesMaterial = new THREE.PointsMaterial({
+    this.particlesMaterialLight = new THREE.PointsMaterial({
       size: 0.04,
       map: this.circle,
       transparent: true,
-      color: 0x324b4b,
+      color: 0x263232,
     });
 
-    this.particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    this.particlesMesh = new THREE.Points(
+      particlesGeometry,
+      this.particlesMaterialLight
+    );
 
     this.scene.add(this.particlesMesh);
+    console.log(this.particlesMesh);
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     this.progress = 0;
     this.dummy = new THREE.Vector3(0, 0, 0);
@@ -51,13 +55,29 @@ export default class Floaters {
     const geometry = new THREE.SphereGeometry(0.5, 32, 16);
     const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
     this.sphere = new THREE.Mesh(geometry, material);
-    this.sphere2 = new THREE.Points(geometry, particlesMaterial);
+    this.sphere2 = new THREE.Points(geometry, this.particlesMaterialLight);
 
     // this.scene.add(this.sphere);
     // this.scene.add(this.sphere2);
     //this.setPath();
     //this.setModel();
     this.onMouseMove();
+  }
+
+  switchTheme(theme) {
+    if (theme === "dark") {
+      GSAP.to(this.particlesMesh.material.color, {
+        r: 1,
+        g: 1,
+        b: 1,
+      });
+    } else {
+      GSAP.to(this.particlesMesh.material.color, {
+        r: 0,
+        g: 0,
+        b: 0,
+      });
+    }
   }
 
   setPath() {

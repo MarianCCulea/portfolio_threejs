@@ -28,29 +28,36 @@ export default class Floor {
     const material = new THREE.MeshStandardMaterial({ color: 0xffcb6a });
     const material2 = new THREE.MeshStandardMaterial({ color: 0x9d3b60 });
     const material3 = new THREE.MeshStandardMaterial({ color: 0x8e99ce });
+    const material4 = new THREE.MeshStandardMaterial({ color: 0xffcb6a });
 
     this.circle = new THREE.Mesh(geometry, material);
     this.circle2 = new THREE.Mesh(geometry, material2);
     this.circle3 = new THREE.Mesh(geometry, material3);
+    this.circle4 = new THREE.Mesh(geometry, material4);
 
-    this.circle.position.y = -0.29;
-    this.circle2.position.y = -0.28;
-    this.circle3.position.y = -0.27;
+    this.circle.position.y = -2.55;
+    this.circle2.position.y = -2.54;
+    this.circle3.position.y = -2.53;
+    this.circle4.position.y = -2.52;
 
     this.circle.scale.set(0, 0, 0);
     this.circle2.scale.set(0, 0, 0);
     this.circle3.scale.set(0, 0, 0);
+    this.circle4.scale.set(0, 0, 0);
 
     this.circle.rotation.x = -Math.PI / 2;
     this.circle2.rotation.x = -Math.PI / 2;
     this.circle3.rotation.x = -Math.PI / 2;
+    this.circle4.rotation.x = -Math.PI / 2;
 
     this.circle.receiveShadow = true;
     this.circle2.receiveShadow = true;
     this.circle3.receiveShadow = true;
+    this.circle4.receiveShadow = true;
     this.scene.add(this.circle);
     this.scene.add(this.circle2);
     this.scene.add(this.circle3);
+    this.scene.add(this.circle4);
   }
   resize() {}
   update() {}

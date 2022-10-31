@@ -2,7 +2,8 @@ import Experience from "./Experience";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { BokehPass } from "three/examples/jsm/postprocessing/BokehPass";
-
+import { SSAOPass } from "three/examples/jsm/postprocessing/SSAOPass";
+import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader";
 import * as THREE from "three";
 export default class Renderer {
   constructor() {
@@ -19,6 +20,12 @@ export default class Renderer {
       antialias: true,
     });
 
+    this.renderTarget = new THREE.WebGLRenderTarget(
+      this.sizes.width,
+      this.sizes.height,
+      { samples: 8 }
+    );
+
     this.renderer.physicallyCorrectLights = true;
     this.renderer.outputencoding - THREE.sRGBEncoding;
     this.renderer.toneMapping = THREE.CineonToneMapping;
@@ -30,19 +37,27 @@ export default class Renderer {
     this.renderer.setClearColor(new THREE.Color("#21282a"), 1);
     /////////////////////////////////////////////////////
 
-    this.composer = new EffectComposer(this.renderer);
+    this.composer = new EffectComposer(this.renderer, this.renderTarget);
     this.composer.addPass(
       new RenderPass(this.scene, this.camera.perspectiveCamera)
     );
     this.bokeh = new BokehPass(this.scene, this.camera.perspectiveCamera, {
       focus: 10,
-      aperture: 0.0009,
+      aperture: 0.0005,
       maxblur: 1,
       width: this.sizes.width,
       height: this.sizes.height,
     });
+
+    this.ssao = new SSAOPass(
+      this.scene,
+      this.camera.perspectiveCamera,
+      this.sizes.width,
+      this.sizes.height
+    );
+
+    // this.fxaa = new ShaderPass(FXAAShader);
     this.composer.addPass(this.bokeh);
-    console.log(this.bokeh);
   }
   resize() {
     this.renderer.setSize(this.sizes.width, this.sizes.height);

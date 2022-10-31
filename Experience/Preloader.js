@@ -180,6 +180,7 @@ export default class Preloader extends EventEmitter {
           duration: 0.2,
           ease: "back.out(1.7)",
         })
+        //*********************************************** */
         .to(
           this.cvChildren.sphere4.scale,
           {
@@ -463,7 +464,7 @@ export default class Preloader extends EventEmitter {
           "<0.2"
         )
         .to(
-          this.cvChildren.car.scale,
+          this.cvChildren.hob1.scale,
           {
             x: 1,
             y: 1,
@@ -474,7 +475,7 @@ export default class Preloader extends EventEmitter {
           "<0.3"
         )
         .to(
-          this.cvChildren.puzzle.scale,
+          this.cvChildren.hob2.scale,
           {
             x: 1,
             y: 1,
@@ -485,7 +486,7 @@ export default class Preloader extends EventEmitter {
           "<0.2"
         )
         .to(
-          this.cvChildren.dumbell.scale,
+          this.cvChildren.hob3.scale,
           {
             x: 1,
             y: 1,
@@ -496,7 +497,7 @@ export default class Preloader extends EventEmitter {
           "<0.4"
         )
         .to(
-          this.cvChildren.controller.scale,
+          this.cvChildren.hob4.scale,
           {
             x: 1,
             y: 1,
@@ -507,7 +508,7 @@ export default class Preloader extends EventEmitter {
           "<0.6"
         )
         .to(
-          this.cvChildren.ball.scale,
+          this.cvChildren.hob5.scale,
           {
             x: 1,
             y: 1,
@@ -618,7 +619,7 @@ export default class Preloader extends EventEmitter {
     this.moveFlag = false;
     await this.secondIntro();
     this.scaleFlag = false;
-    this.emit("enableControls");
+    this.emit("enablecontrols");
   }
 
   move() {

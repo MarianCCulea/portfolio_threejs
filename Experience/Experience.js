@@ -28,15 +28,14 @@ export default class Experience {
     this.camera = new Camera();
     this.renderer = new Renderer();
     this.resources = new Resources(assets);
+
     this.theme = new Theme();
     this.world = new World();
     this.preloader = new Preloader();
-    this.floaters = new Floaters();
 
-    this.controls = new Controls(); //
-    // this.preloader.on("enablecontrols", () => {
-    //   this.controls = new Controls();
-    // });
+    this.preloader.on("enablecontrols", () => {
+      this.controls = new Controls();
+    });
     this.sizes.on("resize", () => {
       this.resize();
     });
@@ -55,6 +54,5 @@ export default class Experience {
     this.world.update();
     this.renderer.update();
     this.preloader.update();
-    this.floaters.update();
   }
 }

@@ -74,14 +74,14 @@ export default class Enviroment {
   switchTheme(theme) {
     if (theme === "dark") {
       GSAP.to(this.sunLight.color, {
-        r: 0.172,
-        g: 0.2313,
-        b: 0.6862,
+        r: 0.17254901960784313,
+        g: 0.23137254901960785,
+        b: 0.6862745098039216,
       });
       GSAP.to(this.ambientLight.color, {
-        r: 0.172,
-        g: 0.2313,
-        b: 0.6862,
+        r: 0.17254901960784313,
+        g: 0.23137254901960785,
+        b: 0.6862745098039216,
       });
       GSAP.to(this.sunLight, {
         intensity: 0.78,
@@ -91,14 +91,14 @@ export default class Enviroment {
       });
     } else {
       GSAP.to(this.sunLight.color, {
-        r: 1,
-        g: 1,
-        b: 1,
+        r: 255 / 255,
+        g: 255 / 255,
+        b: 255 / 255,
       });
       GSAP.to(this.ambientLight.color, {
-        r: 1,
-        g: 1,
-        b: 1,
+        r: 255 / 255,
+        g: 255 / 255,
+        b: 255 / 255,
       });
       GSAP.to(this.sunLight, {
         intensity: 3,
@@ -108,6 +108,7 @@ export default class Enviroment {
       });
     }
   }
+
   resize() {}
   update() {}
 }
