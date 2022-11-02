@@ -145,16 +145,9 @@ export default class Controls {
               z: -1.65,
               y: -0.6,
             })
-            .to(
-              this.circle3.scale,
-              {
-                x: 3,
-                y: 3,
-                z: 3,
-              },
-              "<"
-            )
+
             .to(this.floaters.particlesMesh.material, { opacity: 0.9 }, "<")
+            .to(this.floaters.particlesMesh.scale, { x: 1, y: 1, z: 1 }, "<")
             //   ;
             // this.sixMoveTimeline = new GSAP.timeline({
             //   scrollTrigger: {
@@ -516,6 +509,15 @@ export default class Controls {
               y: 0.726,
             })
             .to(
+              this.circle3.scale,
+              {
+                x: 3,
+                y: 3,
+                z: 3,
+              },
+              "<"
+            )
+            .to(
               this.phone.scale,
               {
                 x: 0.2,
@@ -539,7 +541,7 @@ export default class Controls {
               invalidateOnRefresh: true,
             },
           })
-            .to(this.circle3.scale, {
+            .to(this.circle4.scale, {
               x: 3,
               y: 3,
               z: 3,

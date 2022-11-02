@@ -51,6 +51,17 @@ export default class Screen {
     });
   }
   setModel() {
+    this.screen.children.forEach((element) => {
+      element.castShadow = true;
+      element.receiveShadow = true;
+      if (element instanceof THREE.Group) {
+        element.children.forEach((groupchild) => {
+          groupchild.castShadow = true;
+          groupchild.receiveShadow = true;
+        });
+      }
+    });
+    this.res;
     this.screen.children[0].children[0].material = new THREE.MeshBasicMaterial({
       map: this.resources.items.screenvid,
     });

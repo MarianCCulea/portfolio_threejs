@@ -12,7 +12,6 @@ import Preloader from "./Preloader";
 import Controls from "./World/Controls";
 
 import World from "./World/World";
-import Floaters from "./World/Floaters";
 
 export default class Experience {
   static instance;

@@ -1,7 +1,6 @@
 import Experience from "../Experience";
 import * as THREE from "three";
 import GSAP from "gsap";
-import GUI from "lil-gui";
 
 export default class Enviroment {
   constructor() {
@@ -45,16 +44,6 @@ export default class Enviroment {
     this.gui.add(this.boxobj.rotation, "z", 0, 6).onChange(() => {
       this.plane.rotation.z = this.boxobj.rotation.z;
     });
-    // this.gui.addColor(this.obj, "colorObj").onChange(() => {
-    //   this.sunLight.color.copy(this.obj.colorObj);
-    //   this.ambientLight.color.copy(this.obj.colorObj);
-    //   console.log(this.obj.colorObj);
-    // });
-
-    // this.gui.add(this.obj, "intensity", 0, 10).onChange(() => {
-    //   this.sunLight.intensity = this.obj.intensity;
-    //   this.sunLight.ambientLight = this.obj.intensity;
-    // });
   }
   setSunLight() {
     this.sunLight = new THREE.DirectionalLight("#ffffff", 3);
@@ -62,8 +51,7 @@ export default class Enviroment {
     this.sunLight.shadow.camera.far = 20;
     this.sunLight.shadow.mapSize.set(2048, 2048);
     this.sunLight.shadow.normalBias = 0.05;
-    // const helper = new THREE.CameraHelper(this.sunLight.shadow.camera);
-    // this.scene.add(helper);
+
     this.sunLight.position.set(1.5, 7, 3);
     this.scene.add(this.sunLight);
 

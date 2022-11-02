@@ -229,6 +229,11 @@ transform: scale(0.85);
   width: 100%;
 }
 
+.section-margin-half{
+  height: 1000px;
+  width: 100%;
+}
+
 .section{
   position: relative;
   width: 50%;

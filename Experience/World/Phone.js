@@ -49,8 +49,16 @@ export default class Phone {
   }
 
   setModel() {
-    console.log(this.phone);
-
+    this.phone.children.forEach((element) => {
+      element.castShadow = true;
+      element.receiveShadow = true;
+      if (element instanceof THREE.Group) {
+        element.children.forEach((groupchild) => {
+          groupchild.castShadow = true;
+          groupchild.receiveShadow = true;
+        });
+      }
+    });
     this.resources.items.phonevid.flipY = false;
     this.phone.children[0].children[2].material = new THREE.MeshBasicMaterial({
       map: this.resources.items.phonevid,

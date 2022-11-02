@@ -47,7 +47,6 @@ export default class Floaters {
     );
 
     this.scene.add(this.particlesMesh);
-    console.log(this.particlesMesh);
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     this.progress = 0;
     this.dummy = new THREE.Vector3(0, 0, 0);

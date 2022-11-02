@@ -52,7 +52,6 @@ export default class Cv {
   }
 
   setModel() {
-    console.log(this.cv.children);
     this.cv.children.forEach((element) => {
       element.castShadow = true;
       element.receiveShadow = true;
@@ -83,7 +82,6 @@ export default class Cv {
     this.cv.position.z = 2.25;
     this.cv.position.x = 0.8;
     //this.cvChildren.picture.scale.set(1, 1, 1);
-    console.log(this.cv);
     this.scene.add(this.cv);
   }
 
@@ -96,9 +94,6 @@ export default class Cv {
   }
 
   switchTheme(theme) {
-    // console.log(this.cvChildren.main_side.material.color);
-    // this.cvChildren.main_side.material.color.setHex(0x576464);
-    console.log(this.cvChildren);
     if (theme === "dark") {
       1;
       this.cv.children.forEach((groupchild) => {
@@ -202,7 +197,7 @@ export default class Cv {
             });
           } else if (
             groupchild.material.name.toLowerCase() + "" ===
-            "main_side"
+            "mainpage"
           ) {
             GSAP.to(groupchild.material.color, {
               r: 0.9734449982643127,
