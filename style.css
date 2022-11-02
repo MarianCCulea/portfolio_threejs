@@ -17,6 +17,7 @@ html, body{
 h1,section,p,span,svg{transition: background-color 0.5s, color 0.5s;}
 
 :root{
+  --red:#db929d;
   --red1:#ff756a;
   --red2:#ffbfba;
   --red3:#ff978f;
@@ -27,6 +28,7 @@ h1,section,p,span,svg{transition: background-color 0.5s, color 0.5s;}
   --purple1:#8e99ce;
   --purple1:#596596;
 
+  --green:#7bd0ad;
   --green1:#46aaaa;
   --green2:#a8e5e5;
   --green3:#71c9c9;
@@ -35,6 +37,7 @@ h1,section,p,span,svg{transition: background-color 0.5s, color 0.5s;}
   --green6:#324b4b;
   --green7:#93afae;
 
+  --grey1:#323232;
   --grey1:#576464;
   --grey2:#939999;
   --grey3:#717c7c;
@@ -61,15 +64,15 @@ h1,section,p,span,svg{transition: background-color 0.5s, color 0.5s;}
 
 --white1:#fce4d1;
 
-  --text-black:#263232;
+  --text-black:#323232;
   --primary-color:#FCE4D1;
-  --primary-pink:#8e99ce;
+  --primary-pink:#db929d;
   /* Light theme variables */
---color-text-light:#263232;
+--color-text-light:#323232;
 --color-background-light:#FCE4D1;
---color-pink-light:#939999;
---color-green-light:#915491;
---color-blue-light:#596596;
+--color-pink-light:#db929d;
+--color-green-light:#7bd0ad;
+--color-blue-light:#95abe5;
   /* Dark theme variables */
   --color-text-dark:#717c7c;
   --color-background-dark:#404e4e;
@@ -126,26 +129,26 @@ height: 100%;
 }
 
 .loading{
-  width: 100%;
-  height: 100vh;
-  z-index: 9999;
-  overflow: hidden;
-  }
-  .circle{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin:6px;
-    background-color: var(--color-pink-light);
-    animation: load 1s ease-in-out infinite;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 6px;
+  background-color: var(--color-pink-light);
+  animation: load 1s ease-in-out infinite;
+}
 
-  .circle:nth-child(2){
-    animation-delay: 0.1s;
-  }
-  .circle:nth-child(3){
-    animation-delay: 0.2s;
-  }
+.circle:nth-child(2){
+  animation-delay: 0.1s;
+}
+
+.circle:nth-child(3){
+  animation-delay: 0.2s;
+}
 
   @keyframes load {
     0%{transform: translateY(0)} 
@@ -153,6 +156,8 @@ height: 100%;
     40%{transform: translateY(0)} 
 
   }
+
+  
 /*PAGE*/
 
 .page{
@@ -466,4 +471,29 @@ top: 0px;
 
 .blue-background{
   background-color: var(--color-blue);
+}
+
+
+.yellow-background{
+  background-color: var(--yellow1);
+}
+.green-text{
+  color: var(--green);
+}
+
+.green-border{
+  border-color: var(--green);
+}
+.green-background{
+  background-color: var(--green);
+}
+.pink-text{
+  color: var(--red);
+}
+
+.pink-border{
+  border-color: var(--red);
+}
+.pink-background{
+  background-color: var(--red);
 }

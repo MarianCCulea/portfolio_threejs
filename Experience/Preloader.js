@@ -375,7 +375,7 @@ export default class Preloader extends EventEmitter {
         //////////////
 
         .to(
-          this.cvChildren.text9.scale,
+          this.cvChildren.text8.scale,
           {
             x: 1,
             y: 1,
@@ -409,7 +409,7 @@ export default class Preloader extends EventEmitter {
         )
         ////////
         .to(
-          this.cvChildren.text8.scale,
+          this.cvChildren.text9.scale,
           {
             x: 1,
             y: 1,

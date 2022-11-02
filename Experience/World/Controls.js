@@ -95,6 +95,7 @@ export default class Controls {
             z: 3,
           });
 
+          //second section <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
           this.thirdMoveTimeline = new GSAP.timeline({
             scrollTrigger: {
               trigger: ".second-move",
@@ -119,7 +120,7 @@ export default class Controls {
               start: "top top",
               end: "bottom bottom",
               scrub: 0.6,
-              // markers: true,
+              //markers: true,
               invalidateOnRefresh: true,
             },
           }).to(this.cv.position, {
@@ -128,47 +129,32 @@ export default class Controls {
             z: 3,
           });
 
+          //third section <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
           this.fifthMoveTimeline = new GSAP.timeline({
             scrollTrigger: {
               trigger: ".third-move",
-              start: "top top",
-              end: "bottom bottom",
+              start: "top bottom",
+              end: "bottom top",
               scrub: 0.6,
+              //markers: true,
               invalidateOnRefresh: true,
             },
           })
+            .to(this.cv.position, {
+              x: 0,
+              z: -1.65,
+              y: -0.6,
+            })
             .to(
-              this.cv.position,
-              {
-                x: 0,
-                z: 1.98,
-                y: 0.726,
-              },
-              "trigger"
-            )
-            .to(
-              this.cv.scale,
-              {
-                x: 0.8,
-                z: 0.8,
-                y: 0.8,
-              },
-              "trigger"
-            )
-            .to(
-              this.circle4.scale,
+              this.circle3.scale,
               {
                 x: 3,
                 y: 3,
                 z: 3,
               },
-              "trigger"
+              "<"
             )
-            .to(
-              this.floaters.particlesMesh.material,
-              { opacity: 0.9 },
-              "trigger"
-            )
+            .to(this.floaters.particlesMesh.material, { opacity: 0.9 }, "<")
             //   ;
             // this.sixMoveTimeline = new GSAP.timeline({
             //   scrollTrigger: {
@@ -240,7 +226,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.progressbase7.scale,
@@ -258,7 +244,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text8.scale,
@@ -285,7 +271,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text9.scale,
@@ -312,7 +298,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text7.scale,
@@ -339,7 +325,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text6.scale,
@@ -366,7 +352,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text5.scale,
@@ -393,7 +379,7 @@ export default class Controls {
                 y: 0,
                 z: 0,
               },
-              "progress"
+              "hobbies"
             )
             .to(
               this.cvChildren.text4.scale,
@@ -509,15 +495,11 @@ export default class Controls {
               y: 0,
               z: 0,
             })
-            .to(
-              this.cvChildren.picture_frame.scale,
-              {
-                x: 0,
-                y: 0,
-                z: 0,
-              },
-              "<"
-            );
+            .to(this.cvChildren.picture_frame.scale, {
+              x: 0,
+              y: 0,
+              z: 0,
+            });
           /////////////////////////////////
           this.seventhMoveTimeline = new GSAP.timeline({
             scrollTrigger: {
@@ -528,11 +510,20 @@ export default class Controls {
               invalidateOnRefresh: true,
             },
           })
-            .to(this.phone.scale, {
-              x: 0.2,
-              y: 0.2,
-              z: 0.2,
+            .to(this.cv.position, {
+              x: 0,
+              z: 1.98,
+              y: 0.726,
             })
+            .to(
+              this.phone.scale,
+              {
+                x: 0.2,
+                y: 0.2,
+                z: 0.2,
+              },
+              "<"
+            )
             .to(this.screen.scale, {
               x: 0.8,
               y: 0.8,
@@ -548,11 +539,20 @@ export default class Controls {
               invalidateOnRefresh: true,
             },
           })
-            .to(this.phone.scale, {
-              x: 0,
-              y: 0,
-              z: 0,
+            .to(this.circle3.scale, {
+              x: 3,
+              y: 3,
+              z: 3,
             })
+            .to(
+              this.phone.scale,
+              {
+                x: 0,
+                y: 0,
+                z: 0,
+              },
+              "<"
+            )
             .to(this.screen.scale, {
               x: 0,
               y: 0,
@@ -563,34 +563,16 @@ export default class Controls {
               y: 2,
               z: 3,
             })
-            .to(this.cvChildren.picture.scale, {
+            .to(this.cvChildren.picture_frame.scale, {
               x: 1,
               y: 1,
               z: 1,
             })
-            .to(
-              this.cvChildren.picture_frame.scale,
-              {
-                x: 1,
-                y: 1,
-                z: 1,
-              },
-              "<"
-            );
-          // //third section <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-          // this.thirdMoveTimeline = new GSAP.timeline({
-          //   scrollTrigger: {
-          //     trigger: ".third-move",
-          //     start: "top top",
-          //     end: "bottom bottom",
-          //     scrub: 0.6,
-          //     invalidateOnRefresh: true,
-          //   },
-          // });
-          // this.thirdMoveTimeline.to(this.camera.orthographicCamera.position, {
-          //   y: 1.5,
-          //   x: -4.1,
-          // });
+            .to(this.cvChildren.picture.scale, {
+              x: 1,
+              y: 1,
+              z: 1,
+            });
         } else if (isMobile) {
           // //mobile ###############################################################################################################
           // //resets

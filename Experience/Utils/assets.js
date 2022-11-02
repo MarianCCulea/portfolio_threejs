@@ -1,7 +1,7 @@
 export default [
   { name: "pic", type: "texture", path: "/textures/picture.jpeg" },
   { name: "circle", type: "texture", path: "/textures/nonagon.png" },
-  { name: "cv", type: "glbModel", path: "/models/cv19.glb" },
+  { name: "cv", type: "glbModel", path: "/models/cv27.glb" },
   { name: "phone", type: "glbModel", path: "/models/phone7.glb" },
   { name: "screen", type: "glbModel", path: "/models/screen5.glb" },
   {

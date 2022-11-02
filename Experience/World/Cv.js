@@ -52,6 +52,7 @@ export default class Cv {
   }
 
   setModel() {
+    console.log(this.cv.children);
     this.cv.children.forEach((element) => {
       element.castShadow = true;
       element.receiveShadow = true;
@@ -95,6 +96,9 @@ export default class Cv {
   }
 
   switchTheme(theme) {
+    // console.log(this.cvChildren.main_side.material.color);
+    // this.cvChildren.main_side.material.color.setHex(0x576464);
+    console.log(this.cvChildren);
     if (theme === "dark") {
       1;
       this.cv.children.forEach((groupchild) => {
@@ -142,12 +146,12 @@ export default class Cv {
             });
           } else if (
             groupchild.material.name.toLowerCase() + "" ===
-            "main_side"
+            "mainpage"
           ) {
             GSAP.to(groupchild.material.color, {
-              r: 0.2,
-              g: 0.1,
-              b: 0.1,
+              r: 0.3411764705882353,
+              g: 0.39215686274509803,
+              b: 0.39215686274509803,
             });
           }
         }
